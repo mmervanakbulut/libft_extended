@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: musakbul <musakbul@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/26 13:46:06 by musakbul          #+#    #+#             */
-/*   Updated: 2025/10/26 13:46:14 by musakbul         ###   ########.fr       */
+/*   Created: 2025/07/22 19:16:25 by musakbul          #+#    #+#             */
+/*   Updated: 2025/10/26 14:08:14 by musakbul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-long	ft_atol(const char *str)
+static int	ft_putptr(unsigned long n)
 {
-	int		i;
-	int		sign;
-	long	result;
+	char	*base;
+	int		len;
 
-	i = 0;
-	sign = 1;
-	result = 0;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	len = 0;
+	base = "0123456789abcdef";
+	if (n >= 16)
+		len += ft_putptr(n / 16);
+	len += write(1, &base[n % 16], 1);
+	return (len);
+}
+
+int	ft_print_pointer(void *ptr)
+{
+	int	len;
+
+	if (!ptr)
+		return (write(1, "(nil)", 5));
+	len = write(1, "0x", 2);
+	len += ft_putptr((unsigned long)ptr);
+	return (len);
 }

@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_print_chars.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: musakbul <musakbul@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/26 13:46:06 by musakbul          #+#    #+#             */
-/*   Updated: 2025/10/26 13:46:14 by musakbul         ###   ########.fr       */
+/*   Created: 2025/07/22 19:03:52 by musakbul          #+#    #+#             */
+/*   Updated: 2025/10/26 14:07:33 by musakbul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-long	ft_atol(const char *str)
+int	ft_putchar(char c)
 {
-	int		i;
-	int		sign;
-	long	result;
+	return (write(1, &c, 1));
+}
 
+int	ft_putstr(char *s)
+{
+	int	i;
+
+	if (!s)
+		return (write(1, "(null)", 6));
 	i = 0;
-	sign = 1;
-	result = 0;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	while (s[i])
+		write(1, &s[i++], 1);
+	return (i);
+}
+
+int	ft_putpercent(void)
+{
+	return (write(1, "%", 1));
 }

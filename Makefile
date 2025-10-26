@@ -35,7 +35,18 @@ SRC     = ft_isalpha.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
-			ft_putnbr_fd.c 
+			ft_putnbr_fd.c \
+			ft_atol.c
+
+# ft_printf module (exclude main.c for testing)
+PRINTF_DIR = ft_printf
+PRINTF_SRC = $(PRINTF_DIR)/ft_printf.c \
+			 $(PRINTF_DIR)/ft_print_chars.c \
+			 $(PRINTF_DIR)/ft_print_numbers.c \
+			 $(PRINTF_DIR)/ft_print_pointer.c
+
+# Combine all sources
+SRC += $(PRINTF_SRC)
 
 OBJS = $(SRC:.c=.o)
 

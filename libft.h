@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -50,5 +51,19 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+// extended
+long	ft_atol(const char *str);
+
+// ft_printf module
+int		ft_printf(const char *format, ...);
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
+int		ft_putpercent(void);
+int		ft_putnbr(int n);
+int		ft_putunbr(unsigned int n);
+int		ft_puthex(unsigned int n, int is_uppercase);
+int		ft_print_pointer(void *ptr);
+
 
 #endif
